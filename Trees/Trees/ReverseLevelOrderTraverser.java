@@ -1,5 +1,8 @@
 package Trees;
 
+import java.util.Queue;
+import java.util.LinkedList;
+
 /**
 * Print given Binary Tree level after level 
 * 
@@ -10,6 +13,29 @@ package Trees;
 public class ReverseLevelOrderTraverser {
 	
 	private static BSTNode root;
+
+	private static void solutionUsingQueue(BSTNode root) {
+
+		Queue<BSTNode> queue = new LinkedList<BSTNode>();
+		
+		if(null == root)
+			return;
+		
+		queue.add(root);
+		
+		while(!queue.isEmpty()) {
+			
+			BSTNode first = queue.peek();
+			System.out.println(queue.remove().getValue());
+			
+			if(first.hasLeft())
+				queue.add(first.getLeft());
+			
+			if(first.hasRight())
+				queue.add(first.getRight());
+			
+		}
+	}
 	
 	private static void printReverseLevelOrder(BSTNode root) {
 		
@@ -65,7 +91,7 @@ public class ReverseLevelOrderTraverser {
 		root.getRight().setLeft(new BSTNode(17));
 		
 		printReverseLevelOrder(root);
-		
+		solutionUsingQueue(root);	
 	}
 
 }

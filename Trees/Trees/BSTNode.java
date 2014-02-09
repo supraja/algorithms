@@ -34,5 +34,16 @@ public class BSTNode {
 	public void setRight(BSTNode right) {
 		this.right = right;
 	}
+
+	public boolean hasLeft() {
+		return (left != null);
+	}
 	
+	public boolean hasRight() {
+		return (right != null);
+	}
+	
+	public boolean isLeaf() {
+		return !hasLeft() && !hasRight();
+	}	
 }
